@@ -1,8 +1,13 @@
 import React from 'react'
+import MetabolismHeatMap from './metabolism-heatmap'
 
 const MetabolismPage = () => {
   return (
-    <div>metabolism-tab</div>
+    <div>
+    <>
+      <MetabolismHeatMap/>
+    </>
+    </div>
   )
 }
 
