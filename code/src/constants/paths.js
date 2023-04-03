@@ -1,0 +1,1 @@
+export const DATA_PATH = './data/heart_data.csv'
