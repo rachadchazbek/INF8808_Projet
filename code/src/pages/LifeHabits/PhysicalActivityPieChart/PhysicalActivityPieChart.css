@@ -1,0 +1,15 @@
+.container {
+    display: inline-grid;
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+    width: 50%;
+}
+
+.box {
+    margin: 0.25rem;
+}
+
+.text-box {
+    margin:0.25rem;
+    text-align: justify;
+}

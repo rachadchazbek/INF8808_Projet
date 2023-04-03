@@ -1,8 +1,12 @@
 import React from 'react'
+import PhysicalActivityPieChart from './PhysicalActivityPieChart/physical-activity-pie-chart'
+import classes from "./LifeHabitsTab.css"
 
 const LifeHabitsPage = () => {
   return (
-    <div>life-habits-tab</div>
+      <div className={classes.container}>
+        <PhysicalActivityPieChart/>
+      </div>
   )
 }
 
