@@ -1,8 +1,9 @@
 import React from 'react'
+import MaleAgeBoxAndWhisker from './MaleAgeBoxAndWhisker/MaleAgeBoxAndWhisker'
 
 const PhysicalHabitsPage = () => {
   return (
-    <div>physical-habits-tab</div>
+    <div><MaleAgeBoxAndWhisker/></div>
   )
 }
 
