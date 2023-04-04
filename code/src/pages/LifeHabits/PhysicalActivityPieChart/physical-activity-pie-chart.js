@@ -15,7 +15,7 @@ function PhysicalActivityPieChart() {
   
     const colorScale = d3     
       .scaleSequential()      
-      .interpolator(d3.interpolateCool)      
+      .interpolator(d3.interpolateWarm)      
       .domain([0, 2]);
   
     useEffect(() => {
@@ -103,7 +103,7 @@ function PhysicalActivityPieChart() {
       // Append legend
       const legend = svg
           .append('g')
-          .attr('transform', `translate(${outerRadius/1.5}, ${-outerRadius})`);
+          .attr('transform', `translate(${outerRadius / 1.6}, ${-outerRadius})`);
 
       legend
         .selectAll()
