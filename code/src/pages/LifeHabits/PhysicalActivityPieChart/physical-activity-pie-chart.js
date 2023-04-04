@@ -53,7 +53,6 @@ function PhysicalActivityPieChart() {
   
     function drawChart(dataParsed, containerName) {
       // Remove the old svg
-      console.log(dataParsed);
       d3.select(containerName)
           .select('svg')
           .remove();
@@ -126,15 +125,18 @@ function PhysicalActivityPieChart() {
         .text((d) => d.name);
     }    
   
-    // return <div id="pie-container" />;
+
     return <div className='container'>
       <h4 className='box'>Distribution des gens actifs et non-actifs chez les personnes souffrant de maladies cardiaques</h4>
       <div className='box' id="pie-container-non-healthy"/>
       <h4 className='box'>Distribution des gens actifs et non-actifs chez les personnes ne souffrant pas de maladies cardiaques</h4>
       <div className='box' id="pie-container-healthy"/>
-      <p className='text-box'>L'activité physique est essentielle pour maintenir une bonne santé cardiaque. En effet, l'inactivité physique est l'un des principaux facteurs de risque pour les maladies cardiovasculaires, qui peuvent avoir des conséquences graves sur la santé et la qualité de vie. En faisant régulièrement de l'exercice, on renforce notre cœur et nos vaisseaux sanguins, ce qui améliore la circulation sanguine et réduit le risque de maladies cardiaques. De plus, l'activité physique peut également aider à contrôler d'autres facteurs de risque tels que l'hypertension artérielle, le diabète et l'obésité. Il est donc important de trouver des moyens d'incorporer de l'activité physique dans notre quotidien, que ce soit en faisant du sport, en marchant, en faisant du vélo ou en jardinant.</p>
-
+      <p className='text-box'>
+        L'activité physique est essentielle pour maintenir une bonne santé cardiaque. 
+        En effet, l'inactivité physique est l'un des principaux facteurs de risque pour les maladies cardiovasculaires, qui peuvent avoir des conséquences graves sur la santé et la qualité de vie. 
+        En faisant régulièrement de l'exercice, on renforce notre cœur et nos vaisseaux sanguins, ce qui améliore la circulation sanguine et réduit le risque de maladies cardiaques. 
+        De plus, l'activité physique peut également aider à contrôler d'autres facteurs de risque tels que l'hypertension artérielle, le diabète et l'obésité. 
+        Il est donc important de trouver des moyens d'incorporer de l'activité physique dans notre quotidien, que ce soit en faisant du sport, en marchant, en faisant du vélo ou en jardinant.</p>
     </div>
   }
-  
-  export default PhysicalActivityPieChart;
+export default PhysicalActivityPieChart;
