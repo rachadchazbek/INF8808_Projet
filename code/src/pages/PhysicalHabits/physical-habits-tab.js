@@ -1,9 +1,10 @@
 import React from 'react'
-import MaleAgeBoxAndWhisker from './MaleBoxAndWhisker/MaleAgeBoxAndWhisker'
+import MaleBoxAndWhisker from './MaleBoxAndWhisker/MaleBoxAndWhisker'
+import FemaleBoxAndWhisker from './FemaleBoxAndWhisker/FemaleBoxAndWhisker'
 
 const PhysicalHabitsPage = () => {
   return (
-    <div><MaleAgeBoxAndWhisker/></div>
+    <div><MaleBoxAndWhisker/><FemaleBoxAndWhisker/></div>
   )
 }
 
