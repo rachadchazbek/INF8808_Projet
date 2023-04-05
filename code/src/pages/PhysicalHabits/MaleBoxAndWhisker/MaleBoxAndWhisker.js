@@ -33,9 +33,19 @@ function MaleBoxAndWhisker() {
 
   function drawChart(datacardio, dataNoncardio) {
     // Remove the old svg
-    d3.select('#male-box-and-whisker-container')
+
+    d3.select('#box').select('#male-box-and-whisker-container').append('text')
+    .attr('x', 30)
+    .attr('y', 25)
+    .text('Homme malade');
+
+
+      d3.select('#male-box-and-whisker-container')
       .selectAll('svg')
       .remove();
+
+  const title = d3
+      .select('#male-box-and-whisker-container')
 
 
       // Create new svg for legend
@@ -91,8 +101,8 @@ function MaleBoxAndWhisker() {
     const xAge = d3.scaleBand().range([0, width]).domain(['Sain', 'Malade']).padding(0.05);
     svg.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xAge));
 
-    const y = d3.scaleLinear().domain([0, maxValAge + 20]).range([height, 0]);
-    svg.append('g').call(d3.axisLeft(y));
+    const yAge = d3.scaleLinear().domain([0, maxValAge + 20]).range([height, 0]);
+    svg.append('g').call(d3.axisLeft(yAge));
 
     svg.append("text")
       .attr("transform", "rotate(-90)")
@@ -116,8 +126,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2)
-      .attr('y1', (d) => y(mincardio))
-      .attr('y2', (d) => y(maxcardioAge))
+      .attr('y1', (d) => yAge(mincardio))
+      .attr('y2', (d) => yAge(maxcardioAge))
       .attr('stroke', 'black')
       .style('width', 40);
 
@@ -126,8 +136,8 @@ function MaleBoxAndWhisker() {
       .enter()
       .append('rect')
       .attr('x', (d) => xAge(d))
-      .attr('y', (d) => y(q3cardio))
-      .attr('height', (d) => y(q1cardio) - y(q3cardio))
+      .attr('y', (d) => yAge(q3cardio))
+      .attr('height', (d) => yAge(q1cardio) - yAge(q3cardio))
       .attr('width', xAge.bandwidth())
       .attr('stroke', 'black')
       .style('fill', 'red');
@@ -139,8 +149,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d))
       .attr('x2', (d) => xAge(d) + xAge.bandwidth())
-      .attr('y1', (d) => y(mediancardio))
-      .attr('y2', (d) => y(mediancardio))
+      .attr('y1', (d) => yAge(mediancardio))
+      .attr('y2', (d) => yAge(mediancardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -150,8 +160,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(mincardio))
-      .attr('y2', (d) => y(mincardio))
+      .attr('y1', (d) => yAge(mincardio))
+      .attr('y2', (d) => yAge(mincardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -161,8 +171,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(maxcardioAge))
-      .attr('y2', (d) => y(maxcardioAge))
+      .attr('y1', (d) => yAge(maxcardioAge))
+      .attr('y2', (d) => yAge(maxcardioAge))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -179,8 +189,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2)
-      .attr('y1', (d) => y(minNoncardio))
-      .attr('y2', (d) => y(maxNoncardioAge))
+      .attr('y1', (d) => yAge(minNoncardio))
+      .attr('y2', (d) => yAge(maxNoncardioAge))
       .attr('stroke', 'black')
       .style('width', 40);
 
@@ -189,8 +199,8 @@ function MaleBoxAndWhisker() {
       .enter()
       .append('rect')
       .attr('x', (d) => xAge(d))
-      .attr('y', (d) => y(q3Noncardio))
-      .attr('height', (d) => y(q1Noncardio) - y(q3Noncardio))
+      .attr('y', (d) => yAge(q3Noncardio))
+      .attr('height', (d) => yAge(q1Noncardio) - yAge(q3Noncardio))
       .attr('width', xAge.bandwidth())
       .attr('stroke', 'black')
       .style('fill', 'blue');
@@ -202,8 +212,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d))
       .attr('x2', (d) => xAge(d) + xAge.bandwidth())
-      .attr('y1', (d) => y(medianNoncardio))
-      .attr('y2', (d) => y(medianNoncardio))
+      .attr('y1', (d) => yAge(medianNoncardio))
+      .attr('y2', (d) => yAge(medianNoncardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -213,8 +223,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(minNoncardio))
-      .attr('y2', (d) => y(minNoncardio))
+      .attr('y1', (d) => yAge(minNoncardio))
+      .attr('y2', (d) => yAge(minNoncardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -224,8 +234,8 @@ function MaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(maxNoncardioAge))
-      .attr('y2', (d) => y(maxNoncardioAge))
+      .attr('y1', (d) => yAge(maxNoncardioAge))
+      .attr('y2', (d) => yAge(maxNoncardioAge))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -532,7 +542,7 @@ function MaleBoxAndWhisker() {
       .style('width', 80);
   }
 
-  return <div id="male-box-and-whisker-container" />;
+  return <><h4 className='box'>Distribution de la présence d'une maladie cardiovasculaire chez les hommes selon diverses caratéristiques</h4><div id="male-box-and-whisker-container" /></>;
 }
 
 export default MaleBoxAndWhisker;

@@ -92,8 +92,8 @@ function FefemaleBoxAndWhisker() {
     svg.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xAge));
 
 
-    const y = d3.scaleLinear().domain([0, maxValAge + 20]).range([height, 0]);
-    svg.append('g').call(d3.axisLeft(y));
+    const yAge = d3.scaleLinear().domain([0, maxValAge + 20]).range([height, 0]);
+    svg.append('g').call(d3.axisLeft(yAge));
 
     svg.append("text")
       .attr("transform", "rotate(-90)")
@@ -117,8 +117,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2)
-      .attr('y1', (d) => y(mincardio))
-      .attr('y2', (d) => y(maxcardioAge))
+      .attr('y1', (d) => yAge(mincardio))
+      .attr('y2', (d) => yAge(maxcardioAge))
       .attr('stroke', 'black')
       .style('width', 40);
 
@@ -127,8 +127,8 @@ function FefemaleBoxAndWhisker() {
       .enter()
       .append('rect')
       .attr('x', (d) => xAge(d))
-      .attr('y', (d) => y(q3cardio))
-      .attr('height', (d) => y(q1cardio) - y(q3cardio))
+      .attr('y', (d) => yAge(q3cardio))
+      .attr('height', (d) => yAge(q1cardio) - yAge(q3cardio))
       .attr('width', xAge.bandwidth())
       .attr('stroke', 'black')
       .style('fill', 'red');
@@ -140,8 +140,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d))
       .attr('x2', (d) => xAge(d) + xAge.bandwidth())
-      .attr('y1', (d) => y(mediancardio))
-      .attr('y2', (d) => y(mediancardio))
+      .attr('y1', (d) => yAge(mediancardio))
+      .attr('y2', (d) => yAge(mediancardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -151,8 +151,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(mincardio))
-      .attr('y2', (d) => y(mincardio))
+      .attr('y1', (d) => yAge(mincardio))
+      .attr('y2', (d) => yAge(mincardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -162,8 +162,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(maxcardioAge))
-      .attr('y2', (d) => y(maxcardioAge))
+      .attr('y1', (d) => yAge(maxcardioAge))
+      .attr('y2', (d) => yAge(maxcardioAge))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -180,8 +180,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2)
-      .attr('y1', (d) => y(minNoncardio))
-      .attr('y2', (d) => y(maxNoncardioAge))
+      .attr('y1', (d) => yAge(minNoncardio))
+      .attr('y2', (d) => yAge(maxNoncardioAge))
       .attr('stroke', 'black')
       .style('width', 40);
 
@@ -190,8 +190,8 @@ function FefemaleBoxAndWhisker() {
       .enter()
       .append('rect')
       .attr('x', (d) => xAge(d))
-      .attr('y', (d) => y(q3Noncardio))
-      .attr('height', (d) => y(q1Noncardio) - y(q3Noncardio))
+      .attr('y', (d) => yAge(q3Noncardio))
+      .attr('height', (d) => yAge(q1Noncardio) - yAge(q3Noncardio))
       .attr('width', xAge.bandwidth())
       .attr('stroke', 'black')
       .style('fill', 'blue');
@@ -203,8 +203,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d))
       .attr('x2', (d) => xAge(d) + xAge.bandwidth())
-      .attr('y1', (d) => y(medianNoncardio))
-      .attr('y2', (d) => y(medianNoncardio))
+      .attr('y1', (d) => yAge(medianNoncardio))
+      .attr('y2', (d) => yAge(medianNoncardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -214,8 +214,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(minNoncardio))
-      .attr('y2', (d) => y(minNoncardio))
+      .attr('y1', (d) => yAge(minNoncardio))
+      .attr('y2', (d) => yAge(minNoncardio))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -225,8 +225,8 @@ function FefemaleBoxAndWhisker() {
       .append('line')
       .attr('x1', (d) => xAge(d) + xAge.bandwidth() / 2 - 10)
       .attr('x2', (d) => xAge(d) + xAge.bandwidth() / 2 + 10)
-      .attr('y1', (d) => y(maxNoncardioAge))
-      .attr('y2', (d) => y(maxNoncardioAge))
+      .attr('y1', (d) => yAge(maxNoncardioAge))
+      .attr('y2', (d) => yAge(maxNoncardioAge))
       .attr('stroke', 'black')
       .style('width', 80);
 
@@ -544,7 +544,26 @@ function FefemaleBoxAndWhisker() {
 
   }
 
-  return <div id="female-box-and-whisker-container" />;
+  return (
+    <div className="box">
+      <h4 className="box">Distribution de la présence d'une maladie cardiovasculaire chez les femmes selon diverses caractéristiques</h4>
+      <div id="female-box-and-whisker-container" />
+      <div className="paragraphe">
+        <h4 className="box">Facteur variable</h4>
+        <p className="text-box">
+        Certains facteurs, comme le poids, peuvent être modifiés pour réduire le risque de développer une maladie cardiovasculaire. Par exemple, perdre du poids peut aider à réduire la pression artérielle et le taux de cholestérol, qui sont deux facteurs de risque majeurs pour les maladies cardiovasculaires.
+        </p>
+      </div>
+      <div className="paragraphe">
+        <h4 className="box">Facteur invariables</h4>
+        <p className="text-box">
+        À l'opposé, l'âge, la taille et le sexe sont des facteurs inchangeables qui influencent également le risque de développer une maladie cardiovasculaire. Par exemple, le risque de maladies cardiovasculaires augmente avec l'âge, car les artères ont tendance à durcir et à s'épaissir au fil du temps. De même, les hommes sont plus susceptibles de développer une maladie cardiovasculaire que les femmes, en particulier avant la ménopause. Enfin, la taille peut également jouer un rôle dans le risque de maladies cardiovasculaires, car les personnes plus grandes ont généralement des artères plus larges, ce qui peut réduire la résistance au flux sanguin.
+        </p>
+      </div>
+    </div>
+  );
+  
+
 }
 
 export default FefemaleBoxAndWhisker;
