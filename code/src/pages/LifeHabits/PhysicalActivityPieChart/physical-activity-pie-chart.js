@@ -7,7 +7,7 @@ function PhysicalActivityPieChart() {
     const innerRadius = 0;
   
     const margin = {
-      top: 50, right: 50, bottom: 50, left: 50,
+      top: 50, right: 150, bottom: 50, left: 50,
     };
   
     const width = 2 * outerRadius + margin.left + margin.right;
@@ -103,7 +103,7 @@ function PhysicalActivityPieChart() {
       // Append legend
       const legend = svg
           .append('g')
-          .attr('transform', `translate(${outerRadius / 1.6}, ${-outerRadius})`);
+          .attr('transform', `translate(${outerRadius/1.3}, ${-outerRadius})`);
 
       legend
         .selectAll()
