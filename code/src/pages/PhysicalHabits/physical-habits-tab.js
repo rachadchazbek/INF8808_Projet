@@ -1,8 +1,10 @@
 import React from 'react'
+import MaleBoxAndWhisker from './MaleBoxAndWhisker/MaleBoxAndWhisker'
+import FemaleBoxAndWhisker from './FemaleBoxAndWhisker/FemaleBoxAndWhisker'
 
 const PhysicalHabitsPage = () => {
   return (
-    <div>physical-habits-tab</div>
+    <><div><MaleBoxAndWhisker /></div><div><FemaleBoxAndWhisker /></div></>
   )
 }
 
