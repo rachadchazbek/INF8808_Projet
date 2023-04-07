@@ -1,10 +1,10 @@
 import React from 'react'
-import PhysicalActivityPieChart from './PhysicalActivityPieChart/physical-activity-pie-chart'
+import PercentagesBoxes from './PercentagesBoxesDataviz/percentages-boxes'
 
 const LifeHabitsPage = () => {
   return (
       <div>
-        <PhysicalActivityPieChart/>
+        <PercentagesBoxes />
       </div>
   )
 }
