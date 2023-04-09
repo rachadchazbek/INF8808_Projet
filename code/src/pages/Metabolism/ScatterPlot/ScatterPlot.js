@@ -5,7 +5,9 @@ import "./ScatterPlot.css"
 // ap_hi = systolic blood pressure => x axis
 // ap_lo = diastolic blood pressure => y axis
 
-const SIZE = 600
+const SIZE = 600;
+const xAxisLabel = "Pression systolique";
+const yAxisLabel = "Pression diastolique";
 
 const ScatterPlot = () => {
     const svgRef = useRef(null);
@@ -23,7 +25,7 @@ const ScatterPlot = () => {
                 cardio: Number(dataRow.cardio)
             };
         }
-        
+
     }
 
     const drawChart = (data) => {
@@ -42,7 +44,7 @@ const ScatterPlot = () => {
             .domain([0, d3.max(data, d => d.y)])
             // height to 0 because in html top right is 0, 0. By doing that the data is reversed so it appears naturally
             .range([height, 0]);
-        
+
         const color = d3
             .scaleOrdinal()
             .domain([0, 1])
@@ -57,7 +59,6 @@ const ScatterPlot = () => {
             .attr('width', width + 2 * margin)
             .attr('height', height + 2 * margin)
             .append('g')
-            // .attr('transform', `translate(${margin},${margin})`)
             .selectAll('dot')
             .data(data)
             .enter()
@@ -75,7 +76,23 @@ const ScatterPlot = () => {
         svg
             .append('g')
             .attr('transform', `translate(${margin}, 0)`)
-            .call(d3.axisLeft(yAxis));
+            .call(d3.axisLeft(yAxis))
+
+
+        
+        svg.append("text")
+            .attr("text-anchor", "end")
+            .attr("x", 2*(width + margin)/3)
+            .attr("y", height + margin - 10)
+            .text(xAxisLabel);
+         
+         svg.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "end")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -margin)
+            .attr("y", margin - 30)
+            .text(yAxisLabel);
 
 
         const legend = svg
