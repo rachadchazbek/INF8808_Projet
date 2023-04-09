@@ -1,8 +1,11 @@
 import React from 'react'
+import PhysicalActivityPieChart from './PhysicalActivityPieChart/physical-activity-pie-chart'
 
 const LifeHabitsPage = () => {
   return (
-    <div>life-habits-tab</div>
+      <div>
+        <PhysicalActivityPieChart/>
+      </div>
   )
 }
 

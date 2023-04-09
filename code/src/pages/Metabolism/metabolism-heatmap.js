@@ -12,7 +12,7 @@ const updateSize = (svg) => {
 }
 
 const preprocess = (data) => {
-  
+  console.log(data)
 }
 
 const MetabolismHeatMap = () => {
@@ -25,10 +25,11 @@ const MetabolismHeatMap = () => {
   useEffect(() => {
     const svg = d3.select(heatMapRef.current);
 
-    d3.csv('/data/heart_data.csv', d3.autoType).then((data) => {
-        console.log(data)
+    const fetchData = async () => {
+      await d3.csv('./data/heart_data.csv', d3.autoType).then((data) => {
         preprocess(data)
-    })
+      })
+    }
 
     window.addEventListener('resize', () => {
       updateSize(svg)
@@ -44,7 +45,7 @@ const MetabolismHeatMap = () => {
     <div>
       <header>
         <h2>
-          Prévalence des maladies cardivasculaires selon les niveaux de cholestérol et de glucose
+          Prévalence des maladies cardiovasculaires selon les niveaux de cholestérol et de glucose
         </h2>
       </header>
       <div className="viz-container">
