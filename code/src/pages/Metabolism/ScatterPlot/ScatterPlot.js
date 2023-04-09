@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import "./ScatterPlot.css"
 
 // ap_hi = systolic blood pressure => x axis
 // ap_lo = diastolic blood pressure => y axis
+
+const SIZE = 600
 
 const ScatterPlot = () => {
     const svgRef = useRef(null);
@@ -25,8 +28,8 @@ const ScatterPlot = () => {
 
     const drawChart = (data) => {
         const margin = 50;
-        const width = 1000 - 2 * margin;
-        const height = 1000 - 2 * margin;
+        const width = SIZE - 2 * margin;
+        const height = SIZE - 2 * margin;
 
         const xAxis = d3
             .scaleLinear()
@@ -54,7 +57,7 @@ const ScatterPlot = () => {
             .attr('width', width + 2 * margin)
             .attr('height', height + 2 * margin)
             .append('g')
-            .attr('transform', `translate(${margin},${margin})`)
+            // .attr('transform', `translate(${margin},${margin})`)
             .selectAll('dot')
             .data(data)
             .enter()
@@ -67,9 +70,37 @@ const ScatterPlot = () => {
         svg
             .append('g')
             .attr('transform', `translate(${margin}, ${height})`)
-            .call(d3.axisBottom(xAxis));
+            .call(d3.axisBottom(xAxis))
 
-        svg.append('g').call(d3.axisLeft(yAxis));
+        svg
+            .append('g')
+            .attr('transform', `translate(${margin}, 0)`)
+            .call(d3.axisLeft(yAxis));
+
+
+        const legend = svg
+            .append('g')
+            .attr('transform', `translate(${width}, ${margin})`);
+        
+          legend.selectAll('rect')
+            .data(color.domain())
+            .enter()
+            .append('rect')
+            .attr('x', 0)
+            .attr('y', (d, i) => i * 20)
+            .attr('width', 10)
+            .attr('height', 10)
+            .style('fill', color);
+        
+          legend.selectAll('text')
+            .data(color.domain())
+            .enter()
+            .append('text')
+            .attr('x', 15)
+            .attr('y', (d, i) => i * 20 + 9)
+            .text(d => d === 0 ? 'Sain' : 'Malade')
+            .attr('text-anchor', 'start');
+
     }
 
 
@@ -84,8 +115,19 @@ const ScatterPlot = () => {
         fetchData();
     });
     return (
-        <svg ref={svgRef} width={1000} height={1000}>
-        </svg>
+        <div className='container'>
+            <h3>Pression diastolique et systolique</h3>
+            <div className='box'>
+                <svg ref={svgRef} width={SIZE} height={SIZE} />
+            </div>
+            <p className='text-box'>L'hypertension artérielle est l'un des principaux facteurs de risque des maladies cardiovasculaires. 
+            En effet, l'hypertension chronique exerce une pression constante sur les parois des artères, 
+            ce qui peut endommager les vaisseaux sanguins et les rendre plus vulnérables aux dépôts de graisse. 
+            Ces dépôts peuvent conduire à la formation de plaques d'athérosclérose, qui peuvent à leur tour obstruer les artères et réduire le débit sanguin. 
+            Si une artère obstruée se trouve dans le cœur, cela peut entraîner une crise cardiaque. 
+            Par conséquent, il est important de contrôler sa pression artérielle pour réduire le risque de maladies cardiovasculaires.</p>
+        </div>
+        
     );
 };
 
