@@ -28,17 +28,18 @@ const MetabolismHeatMap = () => {
     const fetchData = async () => {
       await d3.csv('./data/heart_data.csv', d3.autoType).then((data) => {
         preprocess(data)
+        //build(data)
+
+        window.addEventListener('resize', () => {
+          updateSize(svg)
+          // build(data)
+        })
+
+        updateSize(svg)
       })
     }
 
-    window.addEventListener('resize', () => {
-      updateSize(svg)
-      // build()
-    })
-    
-    updateSize(svg)
-    // build()
-
+    fetchData()
   }, [])
 
   return (
