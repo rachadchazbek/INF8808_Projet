@@ -1,8 +1,11 @@
 import React from 'react'
+import ScatterPlot from './ScatterPlot/ScatterPlot'
 
 const MetabolismPage = () => {
   return (
-    <div>metabolism-tab</div>
+    <div>
+      <ScatterPlot></ScatterPlot>
+    </div>
   )
 }
 
