@@ -1,5 +1,6 @@
 import React from 'react'
 import MetabolismHeatMap from './metabolism-heatmap'
+import ScatterPlot from './ScatterPlot/ScatterPlot'
 
 const MetabolismPage = () => {
   return (
@@ -7,6 +8,7 @@ const MetabolismPage = () => {
     <>
       <MetabolismHeatMap/>
     </>
+      <ScatterPlot></ScatterPlot>
     </div>
   )
 }
