@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import "./ScatterPlot.css"
+import {DATA_PATH} from '../../../constants/paths.js'
+
 
 // ap_hi = systolic blood pressure => x axis
 // ap_lo = diastolic blood pressure => y axis
@@ -125,7 +127,7 @@ const ScatterPlot = () => {
     useEffect(() => {
 
         const fetchData = async () => {
-            await d3.csv("./data/heart_data.csv", d3.autoType, preprocess)
+            await d3.csv(DATA_PATH, d3.autoType, preprocess)
                 .then(drawChart);
         };
 

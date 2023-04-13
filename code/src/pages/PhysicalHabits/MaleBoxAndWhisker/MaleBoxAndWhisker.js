@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
+import {DATA_PATH} from '../../../constants/paths.js'
 
 function MaleBoxAndWhisker() {
   const margin = { top: 10, right: 30, bottom: 30, left: 60 };
@@ -13,7 +14,7 @@ function MaleBoxAndWhisker() {
   const fetchData = async () => {
     var parsedDataMalecardio = [];
     var parsedDataMaleNoncardio = [];
-    await d3.csv("./data/heart_data.csv", function (csvRow) {
+    await d3.csv(DATA_PATH, function (csvRow) {
       return {
         age: csvRow.age / 365,
         height: csvRow.height,
