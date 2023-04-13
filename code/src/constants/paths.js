@@ -1,1 +1,1 @@
-export const DATA_PATH = './data/heart_data.csv'
+export const DATA_PATH = 'https://rachadchazbek.github.io/INF8808_Projet/data/heart_data.csv';

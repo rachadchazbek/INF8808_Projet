@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import * as d3Chromatic from 'd3-scale-chromatic'
+import {DATA_PATH} from '../../constants/paths.js'
 
 const margin = { top: 35, right: 200, bottom: 35, left: 200 }
 
@@ -65,7 +66,7 @@ const MetabolismHeatMap = () => {
     const svg = d3.select(heatMapRef.current);
 
     const fetchData = async () => {
-      await d3.csv('./data/heart_data.csv', d3.autoType).then((data) => {
+      await d3.csv(DATA_PATH, d3.autoType).then((data) => {
         data = preprocess(data)
         
         d3.select('.heatmap-svg')

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import './PhysicalActivityPieChart.css';
+import {DATA_PATH} from '../../../constants/paths.js'
 
 function PhysicalActivityPieChart() {
     const outerRadius = 250;
@@ -22,7 +23,7 @@ function PhysicalActivityPieChart() {
       const fetchData = async () => {
         var parsedDataNonHealthy = [];
         var parsedDataHealthy = [];
-        await d3.csv("./data/heart_data.csv", function(csvRow){
+        await d3.csv(DATA_PATH, function(csvRow){
           return {
             active: csvRow.active,
             cardio: csvRow.cardio
