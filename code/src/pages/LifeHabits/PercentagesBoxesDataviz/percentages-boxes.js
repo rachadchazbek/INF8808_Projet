@@ -4,6 +4,9 @@ import * as d3 from 'd3'
 import {DATA_PATH} from '../../../constants/paths'
 
 const PercentagesBoxes = () => {
+    const width = 750;
+    const height = 150;
+    const boxWidth = 150;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,49 +57,56 @@ const PercentagesBoxes = () => {
         ]
     }
 
-    const createSVG = () => {
-        const width = 500;
-        const height = 100;
-
-        const svg = d3.select('.percentages-boxes-graph' )
-            .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-
-        return svg;
+    const scalingFactor = 0.75;
+    const boxSizes = [100, 0, 0, 0];
+    for (let i = 1; i < boxSizes.length; i++) {
+      boxSizes[i] = boxSizes[i - 1] * scalingFactor;
     }
-
-    const appendBoxes = (svg, percentages) => {
-        const width = 500;
-        const height = 100;
-        const boxWidth = width / percentages.length;
-        
-        svg.selectAll('rect')
-            .data(percentages)
-            .enter()
-            .append('rect')
-            .attr('x', (d, i) => i * boxWidth)
-            .attr('y', 0)
-            .attr('width', boxWidth)
-            .attr('height', height)
-            .attr('fill', (_d, i) => `rgb(255, ${255 - ((i + 1) * 30)}, ${255 - (i * 30)})`);
-        }    
-
-    const appendText = (svg, percentages) => {
-        const boxWidth = 500 / percentages.length;
-        svg.selectAll('text')
-            .data(percentages)
-            .enter()
-            .append('text')
-            .text((d) => `${d}%`)
-            .attr('x', (d, i) => i * boxWidth)
-            .attr('y', 100)
-            .attr('text-anchor', 'middle')
-            .style('font-size', (d, i) => `10px`)
-        }
-
-
     
+    const boxMargin = 25;
+    
+    const createSVG = () => {
+      return d3
+        .select(".percentages-boxes-graph")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    };
+    
+    const appendBoxes = (svg, percentages) => {
+      const maxPercentage = d3.max(boxSizes);
+    
+      svg
+        .selectAll("rect")
+        .data(boxSizes)
+        .enter()
+        .append("rect")
+        .attr("x", (d, i) => i * (boxWidth + boxMargin))
+        .attr("y", (d, i) => (height - boxSizes[i]) / 2)
+        .attr("width", (d, i) => boxSizes[i])
+        .attr("height", (d, i) => boxSizes[i])
+        .style("fill", "red")
+        .style("opacity", (d, i) => (i + 1) / boxSizes.length);
+    };
+    
+    const appendText = (svg, percentages) => {
+      svg
+        .selectAll("text")
+        .data(percentages)
+        .enter()
+        .append("text")
+        .text((d) => `${d}%`)
+        .attr("x", (d, i) => i * (boxWidth + boxMargin) + boxWidth / 2)
+        .attr("y", height / 2 + 5)
+        .attr("text-anchor", "middle")
+        .style("font-size", "10px");
+    };
+    
+    const svg = createSVG();
+    appendBoxes(svg, [25, 50, 75, 100]);
+    appendText(svg, [25, 50, 75, 100]);
+    
+
   return (
     <div className='percentages-boxes-graph'></div>
   )
