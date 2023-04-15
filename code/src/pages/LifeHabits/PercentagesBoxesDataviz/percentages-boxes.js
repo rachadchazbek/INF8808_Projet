@@ -2,16 +2,14 @@ import React, { useEffect } from 'react'
 import "./percentages-boxes.css"
 import * as d3 from 'd3'
 import {DATA_PATH} from '../../../constants/paths'
-import { useState } from 'react'
 
 const PercentagesBoxes = () => {
-  const [nbrPersonnes, setNbrPersonnes] = useState(0);
+  const [nbrPersonnes, setNbrPersonnes] = React.useState(0);
     useEffect(() => {
         const fetchData = async () => {
             d3.csv(DATA_PATH).then(data => {
                 const processedData = processData(data);
                 const percentages = calculatePercentages(processedData);
-                console.log(percentages);
                 createDataviz(percentages)
             })
         }
@@ -61,25 +59,26 @@ const PercentagesBoxes = () => {
     }
 
     const buildBox1 = (percentage) => { 
+      const size = 200;
       const box1 = d3.select('#box1')
             .append('svg')
-            .attr('width', 200)
-            .attr('height', 200)
+            .attr('width', size)
+            .attr('height', size)
             .style('background-color', 'red')
             
         box1
       .append('text')
       .text(percentage + '%')
-      .attr('x', 200 / 2)
-      .attr('y', 200 / 2)
+      .attr('x', size / 2)
+      .attr('y', size / 2)
       .attr('text-anchor', 'middle')
       .style('font-size', '25px')
       .style('font-weight', 'bold')
 
         box1
       .append('text')
-      .attr('x', 200 / 2)
-      .attr('y', 200 / 2 + 5)
+      .attr('x', size / 2)
+      .attr('y', size / 2 + 5)
       .attr('text-anchor', 'middle')
       .style('font-size', '11px')
       .style('font-weight', 'bold')
@@ -87,31 +86,32 @@ const PercentagesBoxes = () => {
       .data(['Ne fument pas', 'et ne boivent pas'])
       .enter()
       .append('tspan')
-      .attr('x', 200 / 2)
+      .attr('x', size / 2)
       .attr('dy', '1.2em') // set the line spacing to 1.2em
       .text(function(d) { return d; });
     }
 
     const buildBox2 = (percentage) => {
+      const size = 150; 
       const box2 = d3.select('#box2')
       .append('svg')
-      .attr('width', 150)
-      .attr('height', 150)
+      .attr('width', size)
+      .attr('height', size)
       .style('background-color', 'red')
 
         box2
       .append('text')
       .text(percentage + '%')
-      .attr('x', 150 / 2)
-      .attr('y', 150 / 2)
+      .attr('x', size / 2)
+      .attr('y', size / 2)
       .attr('text-anchor', 'middle')
       .style('font-size', '25px')
       .style('font-weight', 'bold')
 
         box2
       .append('text')
-      .attr('x', 150 / 2)
-      .attr('y', 150 / 2 + 5)
+      .attr('x', size / 2)
+      .attr('y', size / 2 + 5)
       .attr('text-anchor', 'middle')
       .style('font-size', '11px')
       .style('font-weight', 'bold')
@@ -119,23 +119,24 @@ const PercentagesBoxes = () => {
       .data(['Fument', 'et ne boivent pas'])
       .enter()
       .append('tspan')
-      .attr('x', 150 / 2)
+      .attr('x', size / 2)
       .attr('dy', '1.2em') // set the line spacing to 1.2em
       .text(function(d) { return d; });
     }
 
     const buildBox3 = (percentage) => {
+      const size = 100;
       const box3 = d3.select('#box3')
           .append('svg')
-          .attr('width', 100)
-          .attr('height', 100)
+          .attr('width', size)
+          .attr('height', size)
           .style('background-color', 'red')
 
         box3
           .append('text')
           .text(percentage + '%')
-          .attr('x', 100 / 2)
-          .attr('y', 100 / 2)
+          .attr('x', size / 2)
+          .attr('y', size / 2)
           .attr('text-anchor', 'middle')
           .style('font-size', '25px')
           .style('font-weight', 'bold')
@@ -143,8 +144,8 @@ const PercentagesBoxes = () => {
 
         box3
           .append('text')
-          .attr('x', 100 / 2)
-          .attr('y', 100 / 2 + 5)
+          .attr('x', size / 2)
+          .attr('y', size / 2 + 5)
           .attr('text-anchor', 'middle')
           .style('font-size', '11px')
           .style('font-weight', 'bold')
@@ -153,32 +154,33 @@ const PercentagesBoxes = () => {
           .data(['Ne fument pas', 'et boivent'])
           .enter()
           .append('tspan')
-          .attr('x', 100 / 2)
+          .attr('x', size / 2)
           .attr('dy', '1.2em') // set the line spacing to 1.2em
           .text(function(d) { return d; });
     }
 
     const buildBox4 = (percentage) => {
+      const size = 75;
       const box4 = d3.select('#box4')
             .append('svg')
-            .attr('width', 75)
-            .attr('height', 75)
+            .attr('width', size)
+            .attr('height', size)
             .style('background-color', 'red')
             // Add text : 50% fument et boivent
 
         box4
             .append('text')
             .text(percentage + '%')
-            .attr('x', 75 / 2)
-            .attr('y', 75 / 2)
+            .attr('x', size / 2)
+            .attr('y', size / 2)
             .attr('text-anchor', 'middle')
             .style('font-size', '25px')
             .style('font-weight', 'bold')
 
         box4
             .append('text')
-            .attr('x', 75 / 2)
-            .attr('y', 75 / 2 + 5)
+            .attr('x', size / 2)
+            .attr('y', size / 2 + 5)
             .attr('text-anchor', 'middle')
             .style('font-size', '11px')
             .style('font-weight', 'bold')
@@ -186,14 +188,14 @@ const PercentagesBoxes = () => {
             .data(['Fument', 'et boivent'])
             .enter()
             .append('tspan')
-            .attr('x', 75 / 2)
+            .attr('x', size / 2)
             .attr('dy', '1.2em') // set the line spacing to 1.2em
             .text(function(d) { return d; });
         }
 
   return (
     <>
-      <h3>Sux personnes {nbrPersonnes} souffrant de maladies cardiovasculaires</h3>
+      <h3>Sur {nbrPersonnes}  personnes souffrant de maladies cardiovasculaires</h3>
       <div class='boxes-container'>
         <div id='box1'></div>
         <div id='box2'></div>

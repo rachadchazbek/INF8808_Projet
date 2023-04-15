@@ -126,7 +126,6 @@ function PhysicalActivityPieChart() {
         .text((d) => d.name);
     }    
   
-
     return <div>
       <h4 className='box'>Distribution des gens actifs et non-actifs chez les personnes souffrant de maladies cardiaques</h4>
       <div className='box' id="pie-container-non-healthy"/>
