@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import "./percentages-boxes.css"
 import * as d3 from 'd3'
 import {DATA_PATH} from '../../../constants/paths'
+import { useState } from 'react'
 
 const PercentagesBoxes = () => {
+  const [nbrPersonnes, setNbrPersonnes] = useState(0);
     useEffect(() => {
         const fetchData = async () => {
             d3.csv(DATA_PATH).then(data => {
@@ -30,6 +32,7 @@ const PercentagesBoxes = () => {
     }
 
     const calculatePercentages = (processedData) => {
+        setNbrPersonnes(processedData.length);
         const total = processedData.length;
 
         const nonSmokersNonDrinkers = processedData.filter(d => !d.smoker && !d.drinker).length;
@@ -190,8 +193,7 @@ const PercentagesBoxes = () => {
 
   return (
     <>
-
-      <h3>Sux Xs personne souffrant de maladies cardiovasculaires</h3>
+      <h3>Sux personnes {nbrPersonnes} souffrant de maladies cardiovasculaires</h3>
       <div class='boxes-container'>
         <div id='box1'></div>
         <div id='box2'></div>
@@ -203,16 +205,15 @@ const PercentagesBoxes = () => {
         <p>
           Comme nous pouvons voir, nous avons séparé nos données en 4 catégories :
           <ul>
-            <li>Non fumeurs et non buveurs</li>
-            <li>Fumeurs et non buveurs</li>
-            <li>Non fumeurs et buveurs</li>
-            <li>Fumeurs et buveurs</li>
-
-          Parmis chaquen des catégories, on distingue le porucentage d'individus souffrant de maladies cardiovasculaires qui ne fumment pas la cigaretter et qui ne boivent pas de l'alcool de manière
-          régulière. Cette section est la section la plus grande car le pourcentage d'individus qui ne fument pas et qui ne boivent pas est très élevé dans le dataset.
+            Non fumeurs et non buveurs,
+            Fumeurs et non buveurs,
+            Non fumeurs et buveurs,
+            Fumeurs et buveurs
           </ul>
+          Parmis chacune des catégories, on distingue le pourcentage d'individus souffrant de maladies cardiovasculaires qui ne fumment pas la cigarette et qui ne boivent pas de l'alcool de manière
+          régulière. Cette section est la section la plus grande car le pourcentage de ses individus est plus elevé dans le dataset. 
 
-
+          De base le pourcentage des personnes qui fument et boivent est faible dans le dataset. Ce qui montre pas adéquiotement l'impact de la cigarette et de l'alcool sur les maladies cardiovasculaires.
         </p>
       </div>
     </>
