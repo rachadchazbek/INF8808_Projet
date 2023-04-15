@@ -204,7 +204,7 @@ const PercentagesBoxes = () => {
       </div>
       
       <div>
-        <p>
+        <p class="p"> 
           Comme nous pouvons voir, nous avons séparé nos données en 4 catégories :
           <ul>
             Non fumeurs et non buveurs,

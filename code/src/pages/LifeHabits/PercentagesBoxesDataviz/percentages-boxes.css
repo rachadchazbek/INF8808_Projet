@@ -34,3 +34,7 @@
     margin-right: 25px;
 }
 
+.p {
+    text-align: justify;
+    text-justify: inter-word;
+}
