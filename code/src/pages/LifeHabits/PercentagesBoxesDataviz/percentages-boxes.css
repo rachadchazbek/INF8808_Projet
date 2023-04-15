@@ -1,0 +1,40 @@
+
+/* // Make boxes :horizontal */
+.boxes-container {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+#box1, #box2, #box3, #box4 {
+    /* width: 200px;
+    height: 200px;    */
+    margin-right: 25px;
+  }
+
+#box1 {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#box2 {
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+#box3 {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#box4 {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.p {
+    text-align: justify;
+    text-justify: inter-word;
+}
