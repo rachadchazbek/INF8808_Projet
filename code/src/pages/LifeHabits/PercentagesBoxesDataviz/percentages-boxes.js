@@ -189,13 +189,34 @@ const PercentagesBoxes = () => {
         }
 
   return (
+    <>
 
-    <div class='boxes-container'>
-      <div id='box1'></div>
-      <div id='box2'></div>
-      <div id='box3'></div>
-      <div id='box4'></div>
-    </div>
+      <h3>Sux Xs personne souffrant de maladies cardiovasculaires</h3>
+      <div class='boxes-container'>
+        <div id='box1'></div>
+        <div id='box2'></div>
+        <div id='box3'></div>
+        <div id='box4'></div>
+      </div>
+      
+      <div>
+        <p>
+          Cette première visualisation aide à accomplir la première tâche, qui consiste à sensibiliser l'utilisateur à l'incidence entre les bonnes et mauvaises habitudes de vie et le risque de maladie cardiovasculaire, surligné en rouge foncé.
+
+          Cette question est:
+          Quelle est la proportion de fumeurs et de consommateurs d'alcool parmi les individus souffrant de maladies cardiovasculaires?
+
+          Afin de répondre à cette question, nous avons pensé à utiliser un proportional shape chart d'individus souffrant de maladies cardiovasculaires. Voici notre maquette:
+
+        </p>
+      </div>
+
+      <div>
+          Comme nous pouvons voir, nous avons séparé nos données en 4 carrés, chacune contenant une sous-section visée. La première représente le pourcentage d'individus souffrant de maladies cardiovasculaires qui fument la cigarette et qui boivent de l'alcool de manière régulière. Cette section va être plus grande et plus foncée que les autres puisque le pourcentage sera plus gros. Ensuite, les autres sections vont être mises en ordre de grosseur. Elles vont représenter le pourcentage de ceux qui ne font que fumer, que boire de l'alcool et finalement aucun des deux.
+          Nous avons choisi le proportional shape chart afin de mettre en évidence la corrélation entre l'habitude de fumer et de boire au risque de souffrir de maladies cardiovasculaires. La grosseur des différents carrés va rendre facile la comparaison des habitudes de vie. De plus, le gradient de couleur va ajouter à cet effet, avec un rouge foncé indiquant rapidement la source de préoccupation des habitudes de vie. Nous pensons que cela va aider à atteindre notre tâche de sensibiliser l'utilisateur.
+          Afin de permettre à l'utilisateur d'interagir avec la visualisation, nous allons ajouter une fonction de survol aux différentes cases. Lorsque l'utilisateur survole une forme, celle-ci va devenir un peu plus pâle et le pourcentage va être changé pour présenter plus précisément le nombre d'individus utilisés pour arriver aux pourcentages. De plus, si l'utilisateur appuie sur la case, celle-ci va grossir et va offrir de l'information supplémentaire sur les données utilisées comme qu'est-ce qui est considéré comme fumer ou boire de façon habituelle, la source des données ainsi que des références supplémentaires si nécessaire.
+      </div>
+    </>
     )
 }
 
