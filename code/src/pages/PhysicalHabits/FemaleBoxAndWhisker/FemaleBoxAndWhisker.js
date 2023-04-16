@@ -62,7 +62,8 @@ function FefemaleBoxAndWhisker() {
       .append('text')
       .attr('x', 30)
       .attr('y', 25)
-      .text('Femme malade');
+      .text('Femme malade')
+      .style('fill', 'black');
 
     legend
       .append('rect')
@@ -76,7 +77,8 @@ function FefemaleBoxAndWhisker() {
       .append('text')
       .attr('x', 180)
       .attr('y', 25)
-      .text('Femme Saine');
+      .text('Femme Saine')
+      .style('fill', 'black');
 
     const maxcardioAge = d3.max(datacardio, (d) => parseFloat(d.age));
     const maxNoncardioAge = d3.max(dataNoncardio, (d) => parseFloat(d.age));
@@ -104,7 +106,8 @@ function FefemaleBoxAndWhisker() {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Age (année)");
+      .text("Age (année)")
+      .style('fill', 'black');
 
     // Draw box and whisker plot for cardio females
     const agescardio = datacardio.map((d) => d.age);
@@ -256,7 +259,8 @@ function FefemaleBoxAndWhisker() {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Grandeur (cm)");
+      .text("Grandeur (cm)")
+      .style('fill', 'black');
 
     // Draw box and whisker plot for cardio females
     const heightcardio = datacardio.map((d) => parseFloat(d.height));
@@ -407,7 +411,8 @@ function FefemaleBoxAndWhisker() {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Poids (kg)");
+      .text("Poids (kg)")
+      .style('fill', 'black');
 
     // Draw box and whisker plot for cardio females
     const weightcardio = datacardio.map((d) => parseFloat(d.weight));
