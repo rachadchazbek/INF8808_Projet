@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import * as d3Chromatic from 'd3-scale-chromatic'
-import {DATA_PATH} from '../../constants/paths.js'
+import {DATA_PATH} from '../../../constants/paths.js'
 
 const margin = { top: 35, right: 200, bottom: 35, left: 200 }
 
@@ -25,12 +25,13 @@ const preprocess = (data) => {
 }
 
 const build = (data, svg, size) => {
+  colorScale = d3.scaleSequential(d3Chromatic.interpolateOrRd)
+  setColorScaleDomain(colorScale, data)
   updateXScale(xScale, size.width)
   updateYScale(yScale, size.height)
 
   drawXAxis(xScale, size.height - 25)
   drawYAxis(yScale, size.width)
-
 
   updateRects(xScale, yScale, colorScale)
 
@@ -60,69 +61,12 @@ export function summarizeCounts (data) {
   return result
 }
 
-const MetabolismHeatMap = () => {
-  const heatMapRef = useRef(null)
-  useEffect(() => {
-    const svg = d3.select(heatMapRef.current);
-
-    const fetchData = async () => {
-      await d3.csv(DATA_PATH, d3.autoType).then((data) => {
-        data = preprocess(data)
-        
-        d3.select('.heatmap-svg')
-        .select('.container')
-        .remove();
-      
-        d3.select('.heatmap-svg')
-        .append('svg')
-        .attr('class', 'container')
-
-        colorScale = d3.scaleSequential(d3Chromatic.interpolateOrRd)
-        setColorScaleDomain(colorScale, data)
-        initGradient(colorScale)
-        initLegendBar()
-        initLegendAxis()
-        const g = generateG(margin)
-        appendAxes(g)
-        appendRects(data)
-        const size = updateSize(svg)
-        
-        build(data, svg, size)
-        appendGraphLabels(g, size.width + 30, size.height + 15)
-        drawLevelContext(size.width, size.height + 20) 
-        drawScaleTitle(yScale, size.height)
-        window.addEventListener('resize', () => {
-          const size = updateSize(svg)
-          build(data, svg, size)
-        })
-      })
-    }
-
-    fetchData()
-  }, [])
-
-  return (
-    <div>
-      <header>
-        <h2>
-          Prévalence des maladies cardiovasculaires selon les niveaux de cholestérol et de glucose
-        </h2>
-      </header>
-      <div className="viz-container">
-        <div className="graph" id="heatmap">
-          <svg className="heatmap-svg" ref={heatMapRef}></svg>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export function setColorScaleDomain (colorScale, data) {
   colorScale.domain([0.0, 100.0])
 }
 
 export function initGradient (colorScale) {
-  const svg = d3.select('.container')
+  const svg = d3.select('.viz-container')
 
   const defs = svg.append('defs')
 
@@ -143,19 +87,19 @@ export function initGradient (colorScale) {
 }
 
 export function initLegendBar () {
-  const svg = d3.select('.container')
+  const svg = d3.select('.viz-container')
   svg.append('rect').attr('class', 'legend bar')
 }
 
 export function initLegendAxis () {
-  const svg = d3.select('.container')
+  const svg = d3.select('.viz-container')
   svg
     .append('g')
     .attr('class', 'legend-axis')
 }
 
 export function generateG (margin) {
-  return d3.select('.container')
+  return d3.select('.viz-container')
     .append('g')
     .attr('id', 'graph-g')
     .attr('transform',
@@ -203,7 +147,6 @@ export function drawYAxis (yScale, width) {
     .call(d3.axisRight(yScale))
     .select('.domain').remove()
 }
-
 
 export function updateRects (xScale, yScale, colorScale) {
   d3.select('#graph-g').selectAll('.tile')
@@ -289,13 +232,13 @@ export function appendGraphLabels (g, width, height) {
 
 export function drawScaleTitle(yScale, height) 
 {
-  d3.select('.container').append('text')
+  d3.select('.viz-container').append('text')
     .text('% d\'individus ayant')
     .attr('class', 'scaleTitle')
     .attr('transform', 'translate(' + 27 + ', ' +  15 + ')')
     .attr('font-size', 15)
 
-    d3.select('.container').append('text')
+    d3.select('.viz-container').append('text')
     .text('une maladie cardiovasculaire')
     .attr('class', 'scaleTitle')
     .attr('transform', 'translate(' + 0 + ', ' +  30 + ')')
@@ -305,7 +248,7 @@ export function drawScaleTitle(yScale, height)
 export function drawLevelContext(width, height) 
 {
   width += 200
-  d3.select('.container').append('text')
+  d3.select('.viz-container').append('text')
     .text('1: Normal')
     .attr('class', 'levelContext')
     .attr('transform', 'translate(' + width + ', ' +  height + ')')
@@ -313,7 +256,7 @@ export function drawLevelContext(width, height)
     .attr('font-size', 15)
 
   height += 15
-  d3.select('.container').append('text')
+  d3.select('.viz-container').append('text')
     .text('2: Au dessus de la normale')
     .attr('class', 'levelContext')
     .attr('transform', 'translate(' + width + ', ' +  height + ')')
@@ -321,12 +264,78 @@ export function drawLevelContext(width, height)
     .attr('font-size', 15)
 
   height += 15
-  d3.select('.container').append('text')
+  d3.select('.viz-container').append('text')
     .text('3: Bien au dessus de la normal')
     .attr('class', 'levelContext')
     .attr('transform', 'translate(' + width + ', ' +  height + ')')
     .attr('fill', '#898989')
     .attr('font-size', 15)
+}
+
+const MetabolismHeatMap = () => {
+  const heatMapRef = useRef(null)
+  useEffect(() => {
+    const svg = d3.select(heatMapRef.current);
+
+    const fetchData = async () => {
+      await d3.csv(DATA_PATH, d3.autoType).then((data) => {
+        data = preprocess(data)
+        
+        d3.select('.heatmap-svg')
+        .select('.viz-container')
+        .remove();
+      
+        d3.select('.heatmap-svg')
+        .append('svg')
+        .attr('class', 'viz-container')
+
+        colorScale = d3.scaleSequential(d3Chromatic.interpolateOrRd)
+        setColorScaleDomain(colorScale, data)
+        initGradient(colorScale)
+        initLegendBar()
+        initLegendAxis()
+        const g = generateG(margin)
+        appendAxes(g)
+        appendRects(data)
+        const size = updateSize(svg)
+        
+        build(data, svg, size)
+        appendGraphLabels(g, size.width + 30, size.height + 15)
+        drawLevelContext(size.width, size.height + 20) 
+        drawScaleTitle(yScale, size.height)
+        window.addEventListener('resize', () => {
+          const size = updateSize(svg)
+          build(data, svg, size)
+        })
+      })
+    }
+
+    fetchData()
+  }, [])
+
+  return (
+    <div>
+      <header>
+        <h2>
+          Prévalence des maladies cardiovasculaires selon les niveaux de cholestérol et de glucose
+        </h2>
+      </header>
+      <div className="container">
+        <div className="graph" id="heatmap">
+          <svg className="heatmap-svg" ref={heatMapRef}></svg>
+        </div>
+        <p className='text-box'>Il est bien connu qu'un haut taux de cholestérol peut introduire des problèmes cardiaques.
+        En effet, la présence de "mauvais" cholestérol peut former des plaques et des dépôts gras sur les parois des artères,
+        et ainsi rendre difficile la circulation du sang vers les organes vitaux. Il est donc important de surveiller sa
+        consommation d'aliments riches en gras saturés
+        </p>
+        <p className='text-box'>De plus, le glucose est tout aussi important, puisque multiples études ont lié le diabète
+        aux maladies cardiaques. Effectivement, une glycémie élevée peut cause le durcissement d'artères, et ainsi causer
+        un AVC, par exemple.
+        </p>
+      </div>
+    </div>
+  )
 }
 
 export default MetabolismHeatMap

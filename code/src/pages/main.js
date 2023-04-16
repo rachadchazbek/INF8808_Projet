@@ -26,8 +26,8 @@ export default function CenteredTabs() {
 
   const itemsTab = [
     { label: 'Habitudes de vies', value: 1},
-    { label: 'Caractéristiques physiques', value: 2 },
     { label: 'Métabolisme', value: 3 },
+    { label: 'Caractéristiques physiques', value: 2 },
   ];
 
   const itemsContent = [

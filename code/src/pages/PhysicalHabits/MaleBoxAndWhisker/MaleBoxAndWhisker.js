@@ -543,7 +543,7 @@ function MaleBoxAndWhisker() {
       .style('width', 80);
   }
 
-  return <><h4 className='box'>Distribution de la présence d'une maladie cardiovasculaire chez les hommes selon diverses caratéristiques</h4><div id="male-box-and-whisker-container" /></>;
+  return <><h2 className='box'>Distribution de la présence d'une maladie cardiovasculaire chez les hommes selon diverses caratéristiques</h2><div id="male-box-and-whisker-container" /></>;
 }
 
 export default MaleBoxAndWhisker;
