@@ -1,5 +1,5 @@
 import React from 'react'
-import MetabolismHeatMap from './metabolism-heatmap'
+import MetabolismHeatMap from './HeatMap/metabolism-heatmap'
 import ScatterPlot from './ScatterPlot/ScatterPlot'
 
 const MetabolismPage = () => {

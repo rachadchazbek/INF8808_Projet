@@ -127,9 +127,9 @@ function PhysicalActivityPieChart() {
     }    
   
     return <div>
-      <h4 className='box'>Distribution des gens actifs et non-actifs chez les personnes souffrant de maladies cardiaques</h4>
+      <h2 className='box'>Distribution des gens actifs et non-actifs chez les personnes souffrant de maladies cardiaques</h2>
       <div className='box' id="pie-container-non-healthy"/>
-      <h4 className='box'>Distribution des gens actifs et non-actifs chez les personnes ne souffrant pas de maladies cardiaques</h4>
+      <h2 className='box'>Distribution des gens actifs et non-actifs chez les personnes ne souffrant pas de maladies cardiaques</h2>
       <div className='box' id="pie-container-healthy"/>
       <p className='text-box'>
         L'activité physique est essentielle pour maintenir une bonne santé cardiaque. 

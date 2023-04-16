@@ -135,7 +135,7 @@ const ScatterPlot = () => {
     });
     return (
         <div className='container'>
-            <h3>Pression diastolique et systolique</h3>
+            <h2>Pression diastolique et systolique</h2>
             <div className='box'>
                 <svg ref={svgRef} width={SIZE} height={SIZE} />
             </div>

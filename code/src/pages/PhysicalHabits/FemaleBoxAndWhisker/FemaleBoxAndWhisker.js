@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import {DATA_PATH} from '../../../constants/paths.js'
+import "./FemaleBoxAndWhisker.css"
 
 
 function FefemaleBoxAndWhisker() {
@@ -533,33 +534,28 @@ function FefemaleBoxAndWhisker() {
       .attr('y2', (d) => yWeight(maxNoncardioWeight))
       .attr('stroke', 'black')
       .style('width', 80);
-
-
-
-
-
-
-
-
-
-
-
   }
 
   return (
     <div className="box">
-      <h4 className="box">Distribution de la présence d'une maladie cardiovasculaire chez les femmes selon diverses caractéristiques</h4>
+      <h2 className="box">Distribution de la présence d'une maladie cardiovasculaire chez les femmes selon diverses caractéristiques</h2>
       <div id="female-box-and-whisker-container" />
       <div className="paragraphe">
         <h4 className="box">Facteur variable</h4>
         <p className="text-box">
-        Certains facteurs, comme le poids, peuvent être modifiés pour réduire le risque de développer une maladie cardiovasculaire. Par exemple, perdre du poids peut aider à réduire la pression artérielle et le taux de cholestérol, qui sont deux facteurs de risque majeurs pour les maladies cardiovasculaires.
+        Certains facteurs, comme le poids, peuvent être modifiés pour réduire le risque de développer une maladie cardiovasculaire. Par exemple, perdre du poids 
+        peut aider à réduire la pression artérielle et le taux de cholestérol, qui sont deux facteurs de risque majeurs pour les maladies cardiovasculaires.
         </p>
       </div>
+      <br></br>
       <div className="paragraphe">
         <h4 className="box">Facteur invariables</h4>
         <p className="text-box">
-        À l'opposé, l'âge, la taille et le sexe sont des facteurs inchangeables qui influencent également le risque de développer une maladie cardiovasculaire. Par exemple, le risque de maladies cardiovasculaires augmente avec l'âge, car les artères ont tendance à durcir et à s'épaissir au fil du temps. De même, les hommes sont plus susceptibles de développer une maladie cardiovasculaire que les femmes, en particulier avant la ménopause. Enfin, la taille peut également jouer un rôle dans le risque de maladies cardiovasculaires, car les personnes plus grandes ont généralement des artères plus larges, ce qui peut réduire la résistance au flux sanguin.
+        À l'opposé, l'âge, la taille et le sexe sont des facteurs inchangeables qui influencent également le risque de développer une maladie cardiovasculaire. 
+        Par exemple, le risque de maladies cardiovasculaires augmente avec l'âge, car les artères ont tendance à durcir et à s'épaissir au fil du temps. 
+        De même, les hommes sont plus susceptibles de développer une maladie cardiovasculaire que les femmes, en particulier avant la ménopause. 
+        Enfin, la taille peut également jouer un rôle dans le risque de maladies cardiovasculaires, car les personnes plus grandes ont généralement des artères 
+        plus larges, ce qui peut réduire la résistance au flux sanguin.
         </p>
       </div>
     </div>
