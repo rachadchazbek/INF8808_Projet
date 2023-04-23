@@ -4,7 +4,21 @@ import FemaleBoxAndWhisker from './FemaleBoxAndWhisker/FemaleBoxAndWhisker'
 
 const PhysicalHabitsPage = () => {
   return (
-    <><div><MaleBoxAndWhisker /></div><div><FemaleBoxAndWhisker /></div></>
+    <>
+      <div>
+        <MaleBoxAndWhisker />
+      </div>
+      <div>
+        <FemaleBoxAndWhisker />
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+    </>
   )
 }
 

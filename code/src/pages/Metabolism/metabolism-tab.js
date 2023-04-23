@@ -5,10 +5,19 @@ import ScatterPlot from './ScatterPlot/ScatterPlot'
 const MetabolismPage = () => {
   return (
     <div>
-    <>
+
       <MetabolismHeatMap/>
-    </>
+
       <ScatterPlot></ScatterPlot>
+
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      
     </div>
   )
 }
