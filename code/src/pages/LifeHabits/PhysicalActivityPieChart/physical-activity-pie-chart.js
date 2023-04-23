@@ -51,6 +51,34 @@ function PhysicalActivityPieChart() {
       }
       fetchData()
     });
+
+
+    function handleMouseOver(event, d, dataParsed) {
+      // Calculate percentage
+      const percentage = ((d.value / d3.sum(dataParsed, (d) => d.value)) * 100).toFixed(2);
+  
+      // Append tooltip
+      const tooltip = d3.select('body')
+          .append('div')
+          .attr('class', 'tooltip')
+          .style('position', 'absolute')
+          .style('opacity', 0);
+  
+      // Update tooltip content
+      tooltip.html(`<br>${percentage}%`)
+          .style('left', `${event.pageX}px`)
+          .style('top', `${event.pageY}px`);
+  
+      // Show tooltip
+      tooltip.transition()
+          .duration(200)
+          .style('opacity', 0.9);
+  }
+
+  function handleMouseOut() {
+    // Remove tooltip
+    d3.select('.tooltip').remove();
+  }
   
     function drawChart(dataParsed, containerName) {
       // Remove the old svg
@@ -96,10 +124,14 @@ function PhysicalActivityPieChart() {
           .attr('text-anchor', 'middle')
           .attr('alignment-baseline', 'middle')
           .text((d) => d.data.name)
+          .style('fill', 'black')
+          .style('font-weight', 'bold')
           .attr('transform', (d) => {
           const [x, y] = arcGenerator.centroid(d);
           return `translate(${x}, ${y})`;
-          });
+          })
+          .on('mouseover', (event, d) => handleMouseOver(event, d, dataParsed))
+          .on('mouseout', handleMouseOut)
 
       // Append legend
       const legend = svg
@@ -123,7 +155,8 @@ function PhysicalActivityPieChart() {
         .append('text')
         .attr('x', 30)
         .attr('y', (_, i) => i * 25 + 14)
-        .text((d) => d.name);
+        .text((d) => d.name)
+        .style('fill', 'black');
     }    
   
     return <div>
