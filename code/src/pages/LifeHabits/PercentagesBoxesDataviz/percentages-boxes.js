@@ -362,7 +362,7 @@ const PercentagesBoxes = () => {
         box4
             .append('text')
             .attr('x', size / 2)
-            .attr('y', size / 2 + 5)
+            .attr('y', size / 2 )
             .attr('text-anchor', 'middle')
             .style('font-size', '11px')
             .style('font-weight', 'bold')
@@ -437,7 +437,7 @@ const PercentagesBoxes = () => {
         d3.select(this)
         .append('text')
         .attr('x', size / 2)
-        .attr('y', size / 2 + 5)
+        .attr('y', size / 2)
         .attr('text-anchor', 'middle')
         .style('font-size', '11px')
         .style('font-weight', 'bold')
