@@ -8,6 +8,13 @@ const LifeHabitsPage = () => {
       <div class='container'>
         <PhysicalActivityPieChart />
         <PercentagesBoxes />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
   )
 }

@@ -465,7 +465,7 @@ const PercentagesBoxes = () => {
 
   return (
     <>
-      <h3>Sur {nbrPersonnes}  personnes souffrant de maladies cardiovasculaires</h3>
+      <h2>Sur {nbrPersonnes}  personnes souffrant de maladies cardiovasculaires</h2>
       <div class='boxes-container'>
         <div id='box1'></div>
         <div id='box2'></div>
