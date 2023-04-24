@@ -97,7 +97,7 @@ const PercentagesBoxes = () => {
         .attr('x', size / 2)
         .attr('y', size / 2 )
         .attr('text-anchor', 'middle')
-        .style('font-size', '25px')
+        .style('font-size', '24px')
         .style(
           'font-weight', 'bold')
 
@@ -279,23 +279,34 @@ const PercentagesBoxes = () => {
     
             d3.select(this)
             .append('text')
-            .text(Math.round(nbrPersonnes * percentage / 100) + ' personnes')
+            .text(Math.round(nbrPersonnes * percentage / 100))
             .attr('x', size / 2)
-            .attr('y', size / 2 )
+            .attr('y', size / 2 - 10)
             .attr('text-anchor', 'middle')
-            .style('font-size', '11px')
+            .style('font-size', '15px')
             .style(
               'font-weight', 'bold')
+
+              d3.select(this)
+              .append('text')
+              .text('personnes')
+              .attr('x', size / 2)
+              .attr('y', size / 2 + 2)
+              .attr('text-anchor', 'middle')
+              .style('font-size', '15px')
+              .style('font-weight', 'bold')
+            .selectAll('tspan')
+            
     
               d3.select(this)
               .append('text')
               .attr('x', size / 2)
               .attr('y', size / 2 + 5)
               .attr('text-anchor', 'middle')
-              .style('font-size', '11px')
+              .style('font-size', '13px')
               .style('font-weight', 'bold')
             .selectAll('tspan')
-            .data(['Ne fument pas', 'et ne boivent pas'])
+            .data(['Ne fument pas', 'et boivent'])
             .enter()
             .append('tspan')
             .attr('x', size / 2)
@@ -314,7 +325,7 @@ const PercentagesBoxes = () => {
             .append('text')
             .text(percentage + '%')
             .attr('x', size / 2)
-            .attr('y', size / 2)
+            .attr('y', size / 2 + 2)
             .attr('text-anchor', 'middle')
             .style('font-size', '25px')
             .style('font-weight', 'bold')
@@ -322,12 +333,12 @@ const PercentagesBoxes = () => {
             d3.select(this)
             .append('text')
             .attr('x', size / 2)
-            .attr('y', size / 2 + 5)
+            .attr('y', size / 2 )
             .attr('text-anchor', 'middle')
             .style('font-size', '11px')
             .style('font-weight', 'bold')
             .selectAll('tspan')
-            .data(['Ne fument pas', 'et ne boivent pas'])
+            .data(['Ne fument pas', 'et boivent'])
             .enter()
             .append('tspan')
             .attr('x', size / 2)
@@ -373,23 +384,33 @@ const PercentagesBoxes = () => {
 
         d3.select(this)
         .append('text')
-        .text(Math.round(nbrPersonnes * percentage / 100) + ' personnes')
+        .text(Math.round(nbrPersonnes * percentage / 100))
         .attr('x', size / 2)
-        .attr('y', size / 2 )
+        .attr('y', size / 2 - 10)
         .attr('text-anchor', 'middle')
-        .style('font-size', '11px')
+        .style('font-size', '13px')
         .style(
           'font-weight', 'bold')
 
           d3.select(this)
           .append('text')
+          .text('personnes')
           .attr('x', size / 2)
-          .attr('y', size / 2 + 5)
+          .attr('y', size / 2)
           .attr('text-anchor', 'middle')
-          .style('font-size', '11px')
+          .style('font-size', '13px')
+          .style(
+            'font-weight', 'bold')
+
+          d3.select(this)
+          .append('text')
+          .attr('x', size / 2)
+          .attr('y', size / 2)
+          .attr('text-anchor', 'middle')
+          .style('font-size', '13px')
           .style('font-weight', 'bold')
         .selectAll('tspan')
-        .data(['Ne fument pas', 'et ne boivent pas'])
+        .data(['Fument', 'et boivent'])
         .enter()
         .append('tspan')
         .attr('x', size / 2)
@@ -421,14 +442,14 @@ const PercentagesBoxes = () => {
         .style('font-size', '11px')
         .style('font-weight', 'bold')
         .selectAll('tspan')
-        .data(['Ne fument pas', 'et ne boivent pas'])
+        .data(['Fument', 'et boivent'])
         .enter()
         .append('tspan')
         .attr('x', size / 2)
         .attr('dy', '1.2em') // set the line spacing to 1.2em
         .text(function(d) { return d; });
       });
-        }
+    }
 
   
   const appendPercentage = (g, percentage, size) => {
