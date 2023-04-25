@@ -541,10 +541,11 @@ const PercentagesBoxes = () => {
             Non fumeurs et buveurs,
             Fumeurs et buveurs
           </ul>
-          Parmis chacune des catégories, on distingue le pourcentage d'individus souffrant de maladies cardiovasculaires qui ne fumment pas la cigarette et qui ne boivent pas de l'alcool de manière
+          Parmis chacune des catégories, on distingue le pourcentage d'individus souffrant de maladies cardiovasculaires 
+          qui ne fumment pas la cigarette et qui ne boivent pas de l'alcool de manière
           régulière. Cette section est la section la plus grande car le pourcentage de ses individus est plus elevé dans le dataset. 
-
-          De base le pourcentage des personnes qui fument et boivent est faible dans le dataset. Ce qui montre pas adéquiotement l'impact de la cigarette et de l'alcool sur les maladies cardiovasculaires.
+          De base le pourcentage des personnes qui fument et boivent est faible dans le dataset. 
+          Ce qui montre pas adéquatement l'impact de la cigarette et de l'alcool sur les maladies cardiovasculaires.
         </p>
       </div>
     </>

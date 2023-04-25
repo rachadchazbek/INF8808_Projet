@@ -58,50 +58,52 @@ const ScatterPlot = () => {
 
         
         svg
-            .attr('width', width + 2 * margin)
+            .attr('width', width + 4 * margin)
             .attr('height', height + 2 * margin)
             .append('g')
             .selectAll('dot')
             .data(data)
             .enter()
             .append('circle')
-            .attr('cx', d => xAxis(d.x))
+            .attr('cx', d => xAxis(d.x) + 2 * margin)
             .attr('cy', d => yAxis(d.y))
             .attr('r', 3)
             .style('fill', d => color(d.cardio));
         
         svg
             .append('g')
-            .attr('transform', `translate(${margin}, ${height})`)
+            .attr('transform', `translate(${3 * margin}, ${height})`)
             .call(d3.axisBottom(xAxis))
 
         svg
             .append('g')
-            .attr('transform', `translate(${margin}, 0)`)
+            .attr('transform', `translate(${3 * margin}, 0)`)
             .call(d3.axisLeft(yAxis))
-
-
         
         svg.append("text")
             .attr("text-anchor", "end")
-            .attr("x", 2*(width + margin)/3)
+            .attr("x", (2 * (width + margin) / 3) + 2 * margin)
             .attr("y", height + margin - 10)
             .attr("fill", "black")
             .text(xAxisLabel);
          
-         svg.append("text")
+         let ytext = svg.append("text")
             .attr("class", "axis-label")
             .attr("text-anchor", "end")
-            .attr("transform", "rotate(-90)")
-            .attr("x", -margin)
-            .attr("y", margin - 30)
+            .attr("x", margin + 50)
+            .attr("y", height / 2)
             .attr("fill", "black")
-            .text(yAxisLabel);
+            .append('tspan')
+            .text("Pression");
 
+        ytext.append('tspan')
+            .text('diastolique')
+            .attr('x', margin + 50)
+            .attr('y', height / 2 + 20);
 
         const legend = svg
             .append('g')
-            .attr('transform', `translate(${width}, ${margin})`);
+            .attr('transform', `translate(${width + 2 * margin}, ${margin})`);
         
           legend.selectAll('rect')
             .data(color.domain())
@@ -122,6 +124,8 @@ const ScatterPlot = () => {
             .text(d => d === 0 ? 'Sain' : 'Malade')
             .attr("fill", "black")
             .attr('text-anchor', 'start');
+        
+            svg.attr('transform', 'translateX(-50px)')
     }
 
 
@@ -130,7 +134,7 @@ const ScatterPlot = () => {
 
         const fetchData = async () => {
             await d3.csv(DATA_PATH, d3.autoType, preprocess)
-                .then(drawChart);
+                .then(drawChart)
         };
 
         fetchData();

@@ -132,6 +132,7 @@ function PhysicalActivityPieChart() {
           })
           .on('mouseover', (event, d) => handleMouseOver(event, d, dataParsed))
           .on('mouseout', handleMouseOut)
+          .style('user-select', 'none')
 
       // Append legend
       const legend = svg
