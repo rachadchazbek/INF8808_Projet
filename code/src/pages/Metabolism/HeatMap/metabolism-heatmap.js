@@ -15,7 +15,7 @@ const updateSize = (svg) => {
     width: Math.max(bounds.width/1.5, 550),
     height: 550
   }
-  svg.attr('width', 1000).attr('height', svgSize.height + 100);
+  svg.attr('width', 950).attr('height', svgSize.height + 100);
   return svgSize
 }
 
@@ -247,12 +247,13 @@ export function drawScaleTitle(yScale, height)
 
 export function drawLevelContext(width, height) 
 {
-  width += 200
+  width += 180
+  height += 10
   d3.select('.viz-container').append('text')
     .text('1: Normal')
     .attr('class', 'levelContext')
     .attr('transform', 'translate(' + width + ', ' +  height + ')')
-    .attr('fill', '#898989')
+    .attr('fill', 'black')
     .attr('font-size', 15)
 
   height += 15
@@ -260,15 +261,15 @@ export function drawLevelContext(width, height)
     .text('2: Au dessus de la normale')
     .attr('class', 'levelContext')
     .attr('transform', 'translate(' + width + ', ' +  height + ')')
-    .attr('fill', '#898989')
+    .attr('fill', 'black')
     .attr('font-size', 15)
 
   height += 15
   d3.select('.viz-container').append('text')
-    .text('3: Bien au dessus de la normal')
+    .text('3: Bien au dessus de la normale')
     .attr('class', 'levelContext')
     .attr('transform', 'translate(' + width + ', ' +  height + ')')
-    .attr('fill', '#898989')
+    .attr('fill', 'black')
     .attr('font-size', 15)
 }
 

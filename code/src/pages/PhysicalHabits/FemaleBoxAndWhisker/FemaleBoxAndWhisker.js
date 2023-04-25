@@ -44,7 +44,7 @@ function FefemaleBoxAndWhisker() {
     const legend = d3
       .select('#female-box-and-whisker-container')
       .append('svg')
-      .attr('width', width + 2 * margin.left)
+      .attr('width', width)
       .attr('height', height / 2 + 4 * margin.top)
       .append('g')
       .attr('transform', `translate(${0},${0})`);
@@ -53,7 +53,7 @@ function FefemaleBoxAndWhisker() {
     legend
       .append('rect')
       .attr('x', 0)
-      .attr('y', 10)
+      .attr('y', 50)
       .attr('width', 20)
       .attr('height', 20)
       .style('fill', 'red');
@@ -61,13 +61,13 @@ function FefemaleBoxAndWhisker() {
     legend
       .append('text')
       .attr('x', 30)
-      .attr('y', 25)
+      .attr('y', 65)
       .text('Femme malade')
       .style('fill', 'black');
 
     legend
       .append('rect')
-      .attr('x', 150)
+      .attr('x', 0)
       .attr('y', 10)
       .attr('width', 20)
       .attr('height', 20)
@@ -75,7 +75,7 @@ function FefemaleBoxAndWhisker() {
 
     legend
       .append('text')
-      .attr('x', 180)
+      .attr('x', 30)
       .attr('y', 25)
       .text('Femme Saine')
       .style('fill', 'black');

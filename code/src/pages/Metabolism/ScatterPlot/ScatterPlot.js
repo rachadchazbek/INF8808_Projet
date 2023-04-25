@@ -86,6 +86,7 @@ const ScatterPlot = () => {
             .attr("text-anchor", "end")
             .attr("x", 2*(width + margin)/3)
             .attr("y", height + margin - 10)
+            .attr("fill", "black")
             .text(xAxisLabel);
          
          svg.append("text")
@@ -94,6 +95,7 @@ const ScatterPlot = () => {
             .attr("transform", "rotate(-90)")
             .attr("x", -margin)
             .attr("y", margin - 30)
+            .attr("fill", "black")
             .text(yAxisLabel);
 
 
@@ -118,8 +120,8 @@ const ScatterPlot = () => {
             .attr('x', 15)
             .attr('y', (d, i) => i * 20 + 9)
             .text(d => d === 0 ? 'Sain' : 'Malade')
+            .attr("fill", "black")
             .attr('text-anchor', 'start');
-
     }
 
 
