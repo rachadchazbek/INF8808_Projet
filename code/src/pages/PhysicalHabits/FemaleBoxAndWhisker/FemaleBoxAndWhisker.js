@@ -546,7 +546,7 @@ function FefemaleBoxAndWhisker() {
       <h2 className="box">Distribution de la présence d'une maladie cardiovasculaire chez les femmes selon diverses caractéristiques</h2>
       <div id="female-box-and-whisker-container" />
       <div className="paragraphe">
-        <h4 className="box">Facteur variable</h4>
+        <h4 className="box">Facteurs variables</h4>
         <p className="text-box">
         Certains facteurs, comme le poids, peuvent être modifiés pour réduire le risque de développer une maladie cardiovasculaire. Par exemple, perdre du poids 
         peut aider à réduire la pression artérielle et le taux de cholestérol, qui sont deux facteurs de risque majeurs pour les maladies cardiovasculaires.
@@ -554,7 +554,7 @@ function FefemaleBoxAndWhisker() {
       </div>
       <br></br>
       <div className="paragraphe">
-        <h4 className="box">Facteur invariables</h4>
+        <h4 className="box">Facteurs invariables</h4>
         <p className="text-box">
         À l'opposé, l'âge, la taille et le sexe sont des facteurs inchangeables qui influencent également le risque de développer une maladie cardiovasculaire. 
         Par exemple, le risque de maladies cardiovasculaires augmente avec l'âge, car les artères ont tendance à durcir et à s'épaissir au fil du temps. 
