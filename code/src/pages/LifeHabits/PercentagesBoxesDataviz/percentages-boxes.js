@@ -4,18 +4,18 @@ import * as d3 from 'd3'
 import {DATA_PATH} from '../../../constants/paths'
 
 const PercentagesBoxes = () => {
-  const [nbrPersonnes, setNbrPersonnes] = React.useState(0);
+  const [nbrPersonnes, setNbrPersonnes] = React.useState(34979);
     useEffect(() => {
         const fetchData = async () => {
             d3.csv(DATA_PATH).then(data => {
                 const processedData = processData(data);
+                setNbrPersonnes(processedData.length);
                 const percentages = calculatePercentages(processedData);
                 createDataviz(percentages)
             })
         }
         fetchData()
-    }, [])
-
+      }, [])
     const processData = (data) => {
         // Filter out people who do not have cardiovascular disease
         data = data.filter(d => d.cardio === '1');
@@ -30,7 +30,6 @@ const PercentagesBoxes = () => {
     }
 
     const calculatePercentages = (processedData) => {
-        setNbrPersonnes(processedData.length);
         const total = processedData.length;
 
         const nonSmokersNonDrinkers = processedData.filter(d => !d.smoker && !d.drinker).length;
@@ -60,22 +59,16 @@ const PercentagesBoxes = () => {
 
     const buildBox1 = (percentage) => { 
       const size = 200;
+            
       const box1 = d3.select('#box1')
             .append('svg')
             .attr('width', size)
             .attr('height', size)
-            .style('background-color', 'red')
+            .style('background-color', 'red');
             
-        box1
-      .append('text')
-      .text(percentage + '%')
-      .attr('x', size / 2)
-      .attr('y', size / 2)
-      .attr('text-anchor', 'middle')
-      .style('font-size', '25px')
-      .style('font-weight', 'bold')
+      appendPercentage(box1, percentage, size) 
 
-        box1
+      box1
       .append('text')
       .attr('x', size / 2)
       .attr('y', size / 2 + 5)
@@ -89,6 +82,72 @@ const PercentagesBoxes = () => {
       .attr('x', size / 2)
       .attr('dy', '1.2em') // set the line spacing to 1.2em
       .text(function(d) { return d; });
+
+
+      box1
+      .on('mouseover', function() {
+        d3.select(this)
+
+        .selectAll('text')
+        .remove()
+
+        d3.select(this)
+        .append('text')
+        .text(Math.round(nbrPersonnes * percentage / 100) + ' personnes')
+        .attr('x', size / 2)
+        .attr('y', size / 2 )
+        .attr('text-anchor', 'middle')
+        .style('font-size', '24px')
+        .style(
+          'font-weight', 'bold')
+
+          d3.select(this)
+          .append('text')
+          .attr('x', size / 2)
+          .attr('y', size / 2 + 5)
+          .attr('text-anchor', 'middle')
+          .style('font-size', '20px')
+          .style('font-weight', 'bold')
+        .selectAll('tspan')
+        .data(['Ne fument pas', 'et ne boivent pas'])
+        .enter()
+        .append('tspan')
+        .attr('x', size / 2)
+        .attr('dy', '1.2em') // set the line spacing to 1.2em
+        .text(function(d) { return d; });
+      }); 
+
+      box1
+      .on('mouseout', function() {
+        d3.select(this)
+        .selectAll('text')
+        .remove()
+
+
+        d3.select(this)
+        .append('text')
+        .text(percentage + '%')
+        .attr('x', size / 2)
+        .attr('y', size / 2)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '25px')
+        .style('font-weight', 'bold')
+        
+        d3.select(this)
+        .append('text')
+        .attr('x', size / 2)
+        .attr('y', size / 2 + 5)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '11px')
+        .style('font-weight', 'bold')
+        .selectAll('tspan')
+        .data(['Ne fument pas', 'et ne boivent pas'])
+        .enter()
+        .append('tspan')
+        .attr('x', size / 2)
+        .attr('dy', '1.2em') // set the line spacing to 1.2em
+        .text(function(d) { return d; });
+      });
     }
 
     const buildBox2 = (percentage) => {
@@ -99,14 +158,7 @@ const PercentagesBoxes = () => {
       .attr('height', size)
       .style('background-color', 'red')
 
-        box2
-      .append('text')
-      .text(percentage + '%')
-      .attr('x', size / 2)
-      .attr('y', size / 2)
-      .attr('text-anchor', 'middle')
-      .style('font-size', '25px')
-      .style('font-weight', 'bold')
+      appendPercentage(box2, percentage, size)
 
         box2
       .append('text')
@@ -122,6 +174,72 @@ const PercentagesBoxes = () => {
       .attr('x', size / 2)
       .attr('dy', '1.2em') // set the line spacing to 1.2em
       .text(function(d) { return d; });
+
+
+      box2
+      .on('mouseover', function() {
+        d3.select(this)
+
+        .selectAll('text')
+        .remove()
+
+        d3.select(this)
+        .append('text')
+        .text(Math.round(nbrPersonnes * percentage / 100) + ' personnes')
+        .attr('x', size / 2)
+        .attr('y', size / 2 )
+        .attr('text-anchor', 'middle')
+        .style('font-size', '17px')
+        .style(
+          'font-weight', 'bold')
+
+          d3.select(this)
+          .append('text')
+          .attr('x', size / 2)
+          .attr('y', size / 2 + 5)
+          .attr('text-anchor', 'middle')
+          .style('font-size', '15px')
+          .style('font-weight', 'bold')
+        .selectAll('tspan')
+        .data(['Ne fument pas', 'et ne boivent pas'])
+        .enter()
+        .append('tspan')
+        .attr('x', size / 2)
+        .attr('dy', '1.2em') // set the line spacing to 1.2em
+        .text(function(d) { return d; });
+      }); 
+
+      box2
+      .on('mouseout', function() {
+        d3.select(this)
+        .selectAll('text')
+        .remove()
+
+
+        d3.select(this)
+        .append('text')
+        .text(percentage + '%')
+        .attr('x', size / 2)
+        .attr('y', size / 2)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '25px')
+        .style('font-weight', 'bold')
+
+        d3.select(this)
+        .append('text')
+        .attr('x', size / 2)
+        .attr('y', size / 2 + 5)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '11px')
+        .style('font-weight', 'bold')
+        .selectAll('tspan')
+        .data(['Ne fument pas', 'et ne boivent pas'])
+        .enter()
+        .append('tspan')
+        .attr('x', size / 2)
+        .attr('dy', '1.2em') // set the line spacing to 1.2em
+        .text(function(d) { return d; });
+      });
     }
 
     const buildBox3 = (percentage) => {
@@ -132,15 +250,8 @@ const PercentagesBoxes = () => {
           .attr('height', size)
           .style('background-color', 'red')
 
-        box3
-          .append('text')
-          .text(percentage + '%')
-          .attr('x', size / 2)
-          .attr('y', size / 2)
-          .attr('text-anchor', 'middle')
-          .style('font-size', '25px')
-          .style('font-weight', 'bold')
-                  // Add text : fument et boivent under each percentage
+        appendPercentage(box3, percentage, size) 
+
 
         box3
           .append('text')
@@ -157,6 +268,83 @@ const PercentagesBoxes = () => {
           .attr('x', size / 2)
           .attr('dy', '1.2em') // set the line spacing to 1.2em
           .text(function(d) { return d; });
+
+      
+          box3
+          .on('mouseover', function() {
+            d3.select(this)
+    
+            .selectAll('text')
+            .remove()
+    
+            d3.select(this)
+            .append('text')
+            .text(Math.round(nbrPersonnes * percentage / 100))
+            .attr('x', size / 2)
+            .attr('y', size / 2 - 10)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '15px')
+            .style(
+              'font-weight', 'bold')
+
+              d3.select(this)
+              .append('text')
+              .text('personnes')
+              .attr('x', size / 2)
+              .attr('y', size / 2 + 2)
+              .attr('text-anchor', 'middle')
+              .style('font-size', '15px')
+              .style('font-weight', 'bold')
+            .selectAll('tspan')
+            
+    
+              d3.select(this)
+              .append('text')
+              .attr('x', size / 2)
+              .attr('y', size / 2 + 5)
+              .attr('text-anchor', 'middle')
+              .style('font-size', '13px')
+              .style('font-weight', 'bold')
+            .selectAll('tspan')
+            .data(['Ne fument pas', 'et boivent'])
+            .enter()
+            .append('tspan')
+            .attr('x', size / 2)
+            .attr('dy', '1.2em') // set the line spacing to 1.2em
+            .text(function(d) { return d; });
+          }); 
+    
+          box3
+          .on('mouseout', function() {
+            d3.select(this)
+            .selectAll('text')
+            .remove()
+    
+
+            d3.select(this)
+            .append('text')
+            .text(percentage + '%')
+            .attr('x', size / 2)
+            .attr('y', size / 2 + 2)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '25px')
+            .style('font-weight', 'bold')
+    
+            d3.select(this)
+            .append('text')
+            .attr('x', size / 2)
+            .attr('y', size / 2 )
+            .attr('text-anchor', 'middle')
+            .style('font-size', '11px')
+            .style('font-weight', 'bold')
+            .selectAll('tspan')
+            .data(['Ne fument pas', 'et boivent'])
+            .enter()
+            .append('tspan')
+            .attr('x', size / 2)
+            .attr('dy', '1.2em') // set the line spacing to 1.2em
+            .text(function(d) { return d; });
+          });
     }
 
     const buildBox4 = (percentage) => {
@@ -168,19 +356,13 @@ const PercentagesBoxes = () => {
             .style('background-color', 'red')
             // Add text : 50% fument et boivent
 
-        box4
-            .append('text')
-            .text(percentage + '%')
-            .attr('x', size / 2)
-            .attr('y', size / 2)
-            .attr('text-anchor', 'middle')
-            .style('font-size', '25px')
-            .style('font-weight', 'bold')
+
+        appendPercentage(box4, percentage, size) 
 
         box4
             .append('text')
             .attr('x', size / 2)
-            .attr('y', size / 2 + 5)
+            .attr('y', size / 2 )
             .attr('text-anchor', 'middle')
             .style('font-size', '11px')
             .style('font-weight', 'bold')
@@ -191,7 +373,95 @@ const PercentagesBoxes = () => {
             .attr('x', size / 2)
             .attr('dy', '1.2em') // set the line spacing to 1.2em
             .text(function(d) { return d; });
-        }
+
+
+      box4
+      .on('mouseover', function() {
+        d3.select(this)
+
+        .selectAll('text')
+        .remove()
+
+        d3.select(this)
+        .append('text')
+        .text(Math.round(nbrPersonnes * percentage / 100))
+        .attr('x', size / 2)
+        .attr('y', size / 2 - 10)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '13px')
+        .style(
+          'font-weight', 'bold')
+
+          d3.select(this)
+          .append('text')
+          .text('personnes')
+          .attr('x', size / 2)
+          .attr('y', size / 2)
+          .attr('text-anchor', 'middle')
+          .style('font-size', '13px')
+          .style(
+            'font-weight', 'bold')
+
+          d3.select(this)
+          .append('text')
+          .attr('x', size / 2)
+          .attr('y', size / 2)
+          .attr('text-anchor', 'middle')
+          .style('font-size', '13px')
+          .style('font-weight', 'bold')
+        .selectAll('tspan')
+        .data(['Fument', 'et boivent'])
+        .enter()
+        .append('tspan')
+        .attr('x', size / 2)
+        .attr('dy', '1.2em') // set the line spacing to 1.2em
+        .text(function(d) { return d; });
+      }); 
+
+      box4
+      .on('mouseout', function() {
+        d3.select(this)
+        .selectAll('text')
+        .remove()
+
+
+        d3.select(this)
+        .append('text')
+        .text(percentage + '%')
+        .attr('x', size / 2)
+        .attr('y', size / 2)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '25px')
+        .style('font-weight', 'bold')
+
+        d3.select(this)
+        .append('text')
+        .attr('x', size / 2)
+        .attr('y', size / 2)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '11px')
+        .style('font-weight', 'bold')
+        .selectAll('tspan')
+        .data(['Fument', 'et boivent'])
+        .enter()
+        .append('tspan')
+        .attr('x', size / 2)
+        .attr('dy', '1.2em') // set the line spacing to 1.2em
+        .text(function(d) { return d; });
+      });
+    }
+
+  
+  const appendPercentage = (g, percentage, size) => {
+    g
+      .append('text')
+      .text(percentage + '%')
+      .attr('x', size / 2)
+      .attr('y', size / 2)
+      .attr('text-anchor', 'middle')
+      .style('font-size', '25px')
+      .style('font-weight', 'bold')
+  }
 
   return (
     <>
