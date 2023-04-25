@@ -53,8 +53,8 @@ function MaleBoxAndWhisker() {
   const legend = d3
     .select('#male-box-and-whisker-container')
     .append('svg')
-    .attr('width', width + 2*margin.left)
-    .attr('height', height/2 + 4*margin.top)
+    .attr('width', width)
+    .attr('height', height / 2 + 4 * margin.top)
     .append('g')
     .attr('transform', `translate(${0},${0})`);
 
@@ -62,7 +62,7 @@ function MaleBoxAndWhisker() {
   legend
     .append('rect')
     .attr('x', 0)
-    .attr('y', 10)
+    .attr('y', 50)
     .attr('width', 20)
     .attr('height', 20)
     .style('fill', 'red');
@@ -70,12 +70,12 @@ function MaleBoxAndWhisker() {
   legend
     .append('text')
     .attr('x', 30)
-    .attr('y', 25)
+    .attr('y', 65)
     .text('Homme malade');
 
   legend
     .append('rect')
-    .attr('x', 150)
+    .attr('x', 0)
     .attr('y', 10)
     .attr('width', 20)
     .attr('height', 20)
@@ -83,7 +83,7 @@ function MaleBoxAndWhisker() {
 
   legend
     .append('text')
-    .attr('x', 180)
+    .attr('x', 30)
     .attr('y', 25)
     .text('Homme sain');
 

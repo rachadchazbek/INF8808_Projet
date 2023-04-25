@@ -44,7 +44,7 @@ function FefemaleBoxAndWhisker() {
     const legend = d3
       .select('#female-box-and-whisker-container')
       .append('svg')
-      .attr('width', width + 2 * margin.left)
+      .attr('width', width)
       .attr('height', height / 2 + 4 * margin.top)
       .append('g')
       .attr('transform', `translate(${0},${0})`);
@@ -53,7 +53,7 @@ function FefemaleBoxAndWhisker() {
     legend
       .append('rect')
       .attr('x', 0)
-      .attr('y', 10)
+      .attr('y', 50)
       .attr('width', 20)
       .attr('height', 20)
       .style('fill', 'red');
@@ -61,13 +61,13 @@ function FefemaleBoxAndWhisker() {
     legend
       .append('text')
       .attr('x', 30)
-      .attr('y', 25)
+      .attr('y', 65)
       .text('Femme malade')
       .style('fill', 'black');
 
     legend
       .append('rect')
-      .attr('x', 150)
+      .attr('x', 0)
       .attr('y', 10)
       .attr('width', 20)
       .attr('height', 20)
@@ -75,7 +75,7 @@ function FefemaleBoxAndWhisker() {
 
     legend
       .append('text')
-      .attr('x', 180)
+      .attr('x', 30)
       .attr('y', 25)
       .text('Femme Saine')
       .style('fill', 'black');
@@ -546,7 +546,7 @@ function FefemaleBoxAndWhisker() {
       <h2 className="box">Distribution de la présence d'une maladie cardiovasculaire chez les femmes selon diverses caractéristiques</h2>
       <div id="female-box-and-whisker-container" />
       <div className="paragraphe">
-        <h4 className="box">Facteur variable</h4>
+        <h4 className="box">Facteurs variables</h4>
         <p className="text-box">
         Certains facteurs, comme le poids, peuvent être modifiés pour réduire le risque de développer une maladie cardiovasculaire. Par exemple, perdre du poids 
         peut aider à réduire la pression artérielle et le taux de cholestérol, qui sont deux facteurs de risque majeurs pour les maladies cardiovasculaires.
@@ -554,7 +554,7 @@ function FefemaleBoxAndWhisker() {
       </div>
       <br></br>
       <div className="paragraphe">
-        <h4 className="box">Facteur invariables</h4>
+        <h4 className="box">Facteurs invariables</h4>
         <p className="text-box">
         À l'opposé, l'âge, la taille et le sexe sont des facteurs inchangeables qui influencent également le risque de développer une maladie cardiovasculaire. 
         Par exemple, le risque de maladies cardiovasculaires augmente avec l'âge, car les artères ont tendance à durcir et à s'épaissir au fil du temps. 
